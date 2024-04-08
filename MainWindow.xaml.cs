@@ -63,7 +63,9 @@ namespace Лабораторная_2
         private void RemoveLastCharacter()
         {
             if (textLabel.Text.Length > 0)
+            {
                 textLabel.Text = textLabel.Text.Substring(0, textLabel.Text.Length - 1);
+            }
         }
 
         private void CalculateExpression()
@@ -92,9 +94,13 @@ namespace Лабораторная_2
                 textLabel.Text = text;
             }
             else if (textLabel.Text.Contains("="))
+            {
                 textLabel.Text = textLabel.Text.Split('=')[1] + text;
+            }
             else
+            {
                 textLabel.Text += text;
+            }
         }
 
         private string ReplaceCommasWithDots(string input)
