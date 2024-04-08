@@ -87,7 +87,10 @@ namespace Лабораторная_2
         private void AppendToDisplay(string text)
         {
             if (textLabel.Text.Contains("=") && char.IsDigit(text[0]))
+            {
+                ClearDisplay();
                 textLabel.Text = text;
+            }
             else if (textLabel.Text.Contains("="))
                 textLabel.Text = textLabel.Text.Split('=')[1] + text;
             else
