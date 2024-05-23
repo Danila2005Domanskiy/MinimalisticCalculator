@@ -10,12 +10,41 @@ namespace Лабораторная_2
         public MainWindow()
         {
             InitializeComponent();
+            CreateButtons();
+        }
 
-            foreach (var child in MainGrid.Children)
+        private void CreateButtons()
+        {
+            string[,] buttons = 
             {
-                if (child is Button button)
+                { "(", ")", "C", "AC" },
+                { "1", "2", "3", "+" },
+                { "4", "5", "6", "-" },
+                { "7", "8", "9", "*" },
+                { "0", ",", "=", "/" }
+            };
+
+            for (int row = 0; row < buttons.GetLength(0); row++)
+            {
+                for (int col = 0; col < buttons.GetLength(1); col++)
                 {
+                    Button button = new Button
+                    {
+                        Content = buttons[row, col],
+                        FontSize = 25
+                    };
+
                     button.Click += Button_Click;
+
+                    Grid.SetRow(button, row + 2);
+                    Grid.SetColumn(button, col);
+
+                    if (buttons[row, col] == "=")
+                    {
+                        button.Background = System.Windows.Media.Brushes.LightSkyBlue;
+                    }
+
+                    MainGrid.Children.Add(button);
                 }
             }
         }
